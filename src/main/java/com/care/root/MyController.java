@@ -3,6 +3,7 @@ package com.care.root;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class MyController {
@@ -16,5 +17,13 @@ public class MyController {
 	public String memberLogout(Model model) {	//spring에서 model이라는 객체를 넘겨줌, request와 비슷
 		model.addAttribute("key",/*value*/"로그아웃 되었습니다");	//값을 전달
 		return "member/logout";
+	}
+	
+	@RequestMapping(value="login")
+	public ModelAndView memberLogin() {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("login", "로그인 성공!");
+		mv.setViewName("member/login");
+		return mv;
 	}
 }
